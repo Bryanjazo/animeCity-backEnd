@@ -6,9 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-response = HTTParty.get("https://api.jikan.moe/v3/genre/anime/1/1")
-new_resp = response.parsed_response
+# response = HTTParty.get("https://api.jikan.moe/v3/genre/anime/1/1")
+# new_resp = JSON.parse(response.body)
+uri = URI("https://api.jikan.moe/v3/genre/anime/7/1")
+anime_hash = Net::HTTP.get_response(uri)
+anime_array = JSON.parse(anime_hash.body)
 
-new_resp.each["anime"] do |show|
-  Anime.new(title: show["title"], episodes: show["episodes"], url: show["url"], image_url: show["image_url"], description: show["synopsis"], genre: "Action")
+anime_array["anime"].each do |show|
+  Anime.create(title: show["title"], episodes: show["episodes"], url: show["url"], image_url: show["image_url"], description: show["synopsis"], genre: "Mystery")
 end
