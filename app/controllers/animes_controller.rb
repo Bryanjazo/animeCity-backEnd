@@ -7,4 +7,9 @@ class AnimesController < ApplicationController
       render json: {message: "something went wrong"}
     end
   end
+
+  def index
+    animes = Anime.all
+    render json: animes
+  end
 end
