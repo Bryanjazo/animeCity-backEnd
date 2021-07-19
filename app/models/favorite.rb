@@ -1,3 +1,3 @@
 class Favorite < ApplicationRecord
-  belongs_to :animes
+  belongs_to :anime
 end
