@@ -8,8 +8,19 @@ class AnimesController < ApplicationController
     end
   end
 
+
   def index
     animes = Anime.all
     render json: animes
   end
+
+  def show
+    anime = Anime.find_by(id: params[:id])
+    if anime.valid?
+      render json: anime
+    else
+      render json: {message: "No anime found"}
+    end
+end
+
 end
