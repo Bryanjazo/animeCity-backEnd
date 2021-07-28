@@ -13,10 +13,22 @@ class UsersController < ApplicationController
 
 def show
   user = User.find_by(id: params[:id])
+
   if user
+
     render json: user
   else
     render json: {message: "no user found"}
+  end
+end
+
+def update
+  user = User.find_by(id: params[:id])
+  user.update(user_name: params[:user_name], email: params[:email])
+  if user.save
+    render json: user
+  else
+    render json: {message: "Could Not Update User"}
   end
 end
   private

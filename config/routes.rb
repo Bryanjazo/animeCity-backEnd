@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :favorites
   resources :animes
+  resources :sessions
   resources :users do
     resources :watches
   end

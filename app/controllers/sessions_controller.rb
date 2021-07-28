@@ -1,11 +1,16 @@
 class SessionsController < ApplicationController
 
   def create
-    session = Session.new(session_params)
-    if session && session.authenthicate(password: params[:password])
-      render json: session
+    @user = User.find_by(user_name: params[:user_name])
+
+    if @user && @user.authenticate(params[:password])
+      # encode token comes from ApplicationController
+      render json: @user
     else
-      render json: {message: "error"}
+
+      render json: {message: "No users found"}
+      binding.pry
+    end
   end
 
   def session_params
