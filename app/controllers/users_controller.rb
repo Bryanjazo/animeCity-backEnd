@@ -24,6 +24,10 @@ end
 
 def update
   user = User.find_by(id: params[:id])
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3fc31c0fbe0fbce58c7149ceff329bb61138d402
   user.update(user_name: params[:user_name], email: params[:email])
   if user.save
     render json: user
