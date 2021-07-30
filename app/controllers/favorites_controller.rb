@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
   def create
-    favorite = Favortie.new(genre: params[:genre])
+    binding.pry
+    favorite = Favorite.new(genre: params[:genre], user_id: params[:user_id], anime_id: params[:anime_id])
     if favorite.save
       render json: favorite
     end
@@ -8,9 +9,11 @@ class FavoritesController < ApplicationController
 
 
   def index
-    user = User.find_by(id: params[:id])
+
+    user = User.find_by(id: params[:user_id])
+
     favorites = user.favorites
-    render json: favorites.to_json[include: [:animes]]
+    render json: favorites.to_json(include: [:anime])
   end
   private
 
