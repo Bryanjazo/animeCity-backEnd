@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_07_19_002452) do
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "anime_id"
+    t.string "genre"
     t.boolean "Myster"
     t.boolean "Action"
     t.boolean "Dementia"

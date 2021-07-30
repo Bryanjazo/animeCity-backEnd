@@ -3,6 +3,7 @@ class CreateFavorites < ActiveRecord::Migration[6.1]
     create_table :favorites do |t|
       t.belongs_to :user
       t.belongs_to :anime
+      t.string :genre
       t.boolean :Myster
       t.boolean :Action
       t.boolean :Dementia
