@@ -27,8 +27,17 @@ ActiveRecord::Schema.define(version: 2021_07_19_002452) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "anime_id"
+    t.boolean "Myster"
+    t.boolean "Action"
+    t.boolean "Dementia"
+    t.boolean "Comedy"
+    t.boolean "Demons"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["anime_id"], name: "index_favorites_on_anime_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
