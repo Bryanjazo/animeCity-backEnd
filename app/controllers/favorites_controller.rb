@@ -1,6 +1,5 @@
 class FavoritesController < ApplicationController
   def create
-    binding.pry
     favorite = Favorite.new(genre: params[:genre], user_id: params[:user_id], anime_id: params[:anime_id])
     if favorite.save
       render json: favorite

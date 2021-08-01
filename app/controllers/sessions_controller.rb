@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     else
 
       render json: {message: "No users found"}
-      binding.pry
+
     end
   end
 
